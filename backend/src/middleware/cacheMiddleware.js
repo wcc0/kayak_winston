@@ -3,7 +3,7 @@
  * Provides automatic caching for API responses with performance tracking
  */
 
-const { cacheHelper, redisClient } = require('../config/redis');
+const { cacheHelper, getRedisClient } = require('../config/redis');
 
 // Performance metrics storage
 const metrics = {
