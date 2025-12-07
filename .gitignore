@@ -20,3 +20,12 @@ uploads/
 backups/
 coverage/
 .nyc_output/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Test results and large files
+*.jtl
+services/deals_agent/data/
