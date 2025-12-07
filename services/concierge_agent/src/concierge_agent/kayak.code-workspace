@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"name": "kayak",
+			"path": "../../../../../../kayak"
+		},
+		{
+			"name": "airbnb",
+			"path": "../../../../../../airbnb"
+		},
+		{
+			"name": "jottx",
+			"path": "../../../.."
+		},
+		{
+			"name": "jottx_export_20251201_043437",
+			"path": "../../../../../jottx_export_20251201_043437"
+		},
+		{
+			"name": "kayak-platform",
+			"path": "../../../../../../Downloads/kayak-platform"
+		},
+		{
+			"name": "Kayak_prototype",
+			"path": "../../../../../../kayak3/Kayak_prototype"
+		}
+	],
+	"settings": {}
+}

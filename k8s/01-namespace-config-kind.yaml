@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kayak-travel
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kayak-config
+  namespace: kayak-travel
+data:
+  NODE_ENV: "development"
+  LLM_ENABLED: "true"
+  LLM_MODEL: "llama3.2:latest"
+  MYSQL_HOST: "mysql-service"
+  MYSQL_PORT: "3306"
+  MYSQL_USER: "root"
+  MYSQL_DATABASE: "kayak_admin"
+  MONGODB_URI: "mongodb://mongodb-service:27017"
+  REDIS_URL: "redis://redis-service:6379"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  KAFKA_BOOTSTRAP: "kafka-service:9092"
+  KAFKA_CONSUMER_GROUP: "kayak-consumers"
+  OLLAMA_API_URL: "http://ollama-service:11434"
+  OLLAMA_MODEL: "llama3.2:latest"
+  AGENT_HOST: "0.0.0.0"
+  CONCIERGE_PORT: "8002"
+  DEALS_PORT: "8003"
+  LOG_LEVEL: "info"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kayak-secrets
+  namespace: kayak-travel
+type: Opaque
+stringData:
+  MYSQL_PASSWORD: "admin123"
+  MONGODB_PASSWORD: ""
+  REDIS_PASSWORD: ""

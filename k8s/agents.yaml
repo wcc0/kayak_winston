@@ -1,0 +1,136 @@
+# Concierge Agent Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: concierge-agent
+  namespace: kayak-travel
+  labels:
+    app: concierge-agent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: concierge-agent
+  template:
+    metadata:
+      labels:
+        app: concierge-agent
+    spec:
+      containers:
+      - name: concierge-agent
+        image: kayak-concierge-agent:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8002
+          name: http
+        envFrom:
+        - configMapRef:
+            name: kayak-config
+        - secretRef:
+            name: kayak-secrets
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+
+---
+# Concierge Agent Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: concierge-agent-service
+  namespace: kayak-travel
+  labels:
+    app: concierge-agent
+spec:
+  selector:
+    app: concierge-agent
+  ports:
+  - port: 8002
+    targetPort: 8002
+    name: http
+  type: ClusterIP
+
+---
+# Deals Agent Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deals-agent
+  namespace: kayak-travel
+  labels:
+    app: deals-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deals-agent
+  template:
+    metadata:
+      labels:
+        app: deals-agent
+    spec:
+      containers:
+      - name: deals-agent
+        image: kayak-deals-agent:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8003
+          name: http
+        envFrom:
+        - configMapRef:
+            name: kayak-config
+        - secretRef:
+            name: kayak-secrets
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+
+---
+# Deals Agent Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: deals-agent-service
+  namespace: kayak-travel
+  labels:
+    app: deals-agent
+spec:
+  selector:
+    app: deals-agent
+  ports:
+  - port: 8003
+    targetPort: 8003
+    name: http
+  type: ClusterIP

@@ -1,0 +1,27 @@
+========================================
+AWS EC2 Instance Details
+========================================
+Instance ID: i-0c209fa1b54e70dbb
+Public IP: 3.128.192.62
+Region: us-east-2
+Instance Type: m7i-flex.large
+Key Pair: kayak-ec2-key.pem
+
+SSH Command:
+ssh -i kayak-ec2-key.pem ubuntu@3.128.192.62
+
+Service URLs:
+Frontend:         http://3.128.192.62:3001
+Backend API:      http://3.128.192.62:5001
+Concierge Agent:  http://3.128.192.62:8002
+Deals Agent:      http://3.128.192.62:8003
+
+To stop instance:
+aws ec2 stop-instances --instance-ids i-0c209fa1b54e70dbb
+
+To start instance:
+aws ec2 start-instances --instance-ids i-0c209fa1b54e70dbb
+
+To terminate instance:
+aws ec2 terminate-instances --instance-ids i-0c209fa1b54e70dbb
+========================================

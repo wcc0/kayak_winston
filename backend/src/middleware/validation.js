@@ -1,0 +1,159 @@
+const { body, param, query, validationResult } = require('express-validator');
+
+// Validation error handler
+const handleValidationErrors = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      message: 'Validation failed',
+      errors: errors.array()
+    });
+  }
+  next();
+};
+
+// US States validation
+const US_STATES = [
+  'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+];
+
+// SSN format validator
+const isValidSSN = (value) => {
+  const ssnRegex = /^[0-9]{3}-[0-9]{2}-[0-9]{4}$/;
+  return ssnRegex.test(value);
+};
+
+// ZIP code validator
+const isValidZipCode = (value) => {
+  const zipRegex = /^[0-9]{5}(-[0-9]{4})?$/;
+  return zipRegex.test(value);
+};
+
+// Admin validation rules
+const validateAdminRegistration = [
+  body('admin_id')
+    .trim()
+    .custom(isValidSSN)
+    .withMessage('Admin ID must be in SSN format (XXX-XX-XXXX)'),
+  body('first_name')
+    .trim()
+    .isLength({ min: 2, max: 100 })
+    .withMessage('First name must be between 2 and 100 characters'),
+  body('last_name')
+    .trim()
+    .isLength({ min: 2, max: 100 })
+    .withMessage('Last name must be between 2 and 100 characters'),
+  body('email')
+    .trim()
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Invalid email address'),
+  body('password')
+    .isLength({ min: 8 })
+    .withMessage('Password must be at least 8 characters long')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/)
+    .withMessage('Password must contain uppercase, lowercase, number, and special character'),
+  body('phone_number')
+    .optional()
+    .matches(/^[0-9]{10,15}$/)
+    .withMessage('Phone number must be 10-15 digits'),
+  body('state')
+    .optional()
+    .custom((value) => US_STATES.includes(value.toUpperCase()))
+    .withMessage('Invalid US state abbreviation'),
+  body('zip_code')
+    .optional()
+    .custom(isValidZipCode)
+    .withMessage('Invalid ZIP code format'),
+  handleValidationErrors
+];
+
+// Login validation
+const validateLogin = [
+  body('email')
+    .trim()
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Invalid email address'),
+  body('password')
+    .notEmpty()
+    .withMessage('Password is required'),
+  handleValidationErrors
+];
+
+// Listing validation
+const validateListing = [
+  body('listing_type')
+    .isIn(['FLIGHT', 'HOTEL', 'CAR'])
+    .withMessage('Listing type must be FLIGHT, HOTEL, or CAR'),
+  handleValidationErrors
+];
+
+// User ID validation
+const validateUserId = [
+  param('id')
+    .custom(isValidSSN)
+    .withMessage('User ID must be in SSN format (XXX-XX-XXXX)'),
+  handleValidationErrors
+];
+
+// Review validation
+const validateReview = [
+  body('user_id')
+    .notEmpty()
+    .withMessage('user_id is required'),
+  body('listing_type')
+    .isIn(['FLIGHT', 'HOTEL', 'CAR'])
+    .withMessage('listing_type must be FLIGHT, HOTEL, or CAR'),
+  body('listing_id')
+    .notEmpty()
+    .withMessage('listing_id is required'),
+  body('booking_id')
+    .notEmpty()
+    .withMessage('booking_id is required'),
+  body('rating')
+    .isInt({ min: 1, max: 5 })
+    .withMessage('rating must be between 1 and 5'),
+  body('review_text')
+    .isLength({ min: 10, max: 2000 })
+    .withMessage('review_text must be between 10 and 2000 characters'),
+  handleValidationErrors
+];
+
+// Booking validation
+const validateBooking = [
+  body('user_id')
+    .notEmpty()
+    .withMessage('user_id is required'),
+  body('booking_type')
+    .isIn(['FLIGHT', 'HOTEL', 'CAR'])
+    .withMessage('booking_type must be FLIGHT, HOTEL, or CAR'),
+  body('reference_id')
+    .notEmpty()
+    .withMessage('reference_id is required'),
+  body('start_date')
+    .isDate()
+    .withMessage('start_date must be a valid date'),
+  body('unit_price')
+    .isFloat({ min: 0 })
+    .withMessage('unit_price must be a positive number'),
+  body('total_price')
+    .isFloat({ min: 0 })
+    .withMessage('total_price must be a positive number'),
+  handleValidationErrors
+];
+
+module.exports = {
+  validateAdminRegistration,
+  validateLogin,
+  validateListing,
+  validateUserId,
+  validateReview,
+  validateBooking,
+  handleValidationErrors
+};

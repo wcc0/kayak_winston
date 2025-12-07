@@ -1,0 +1,215 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: concierge-agent-service
+  namespace: kayak-travel
+spec:
+  selector:
+    app: concierge-agent
+  ports:
+    - port: 8002
+      targetPort: 8002
+      protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deals-db-loader
+  namespace: kayak-travel
+data:
+  load-deals.sh: |
+    #!/bin/sh
+    if [ -f /host/deals.db ]; then
+      cp /host/deals.db /shared/deals.db
+      chmod 666 /shared/deals.db
+      echo "Deals database loaded to shared volume"
+    else
+      echo "No deals.db found in host"
+    fi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: concierge-agent
+  namespace: kayak-travel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: concierge-agent
+  template:
+    metadata:
+      labels:
+        app: concierge-agent
+    spec:
+      initContainers:
+      - name: setup-deals-db
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command: ['sh', '-c']
+        args:
+        - |
+          if [ -f /host/deals.db ]; then
+            cp /host/deals.db /shared/deals.db
+            chmod 666 /shared/deals.db
+            echo "Deals database loaded"
+          else
+            echo "No deals.db found, will fallback to empty DB"
+          fi
+        volumeMounts:
+        - name: host-deals-db
+          mountPath: /host
+        - name: shared-volume
+          mountPath: /shared
+      containers:
+      - name: concierge-agent
+        image: kayak-concierge-agent:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8002
+        env:
+        - name: LLM_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: LLM_ENABLED
+        - name: LLM_MODEL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: LLM_MODEL
+        - name: KAFKA_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: KAFKA_BOOTSTRAP
+        - name: OLLAMA_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: OLLAMA_API_URL
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: DATABASE_HOST
+        - name: DATABASE_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: DATABASE_USER
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: DATABASE_PASSWORD
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        volumeMounts:
+        - name: shared-volume
+          mountPath: /shared
+      volumes:
+      - name: host-deals-db
+        hostPath:
+          path: /Users/winston/kayak2/jottx/services/deals_agent/data/normalized
+          type: Directory
+      - name: shared-volume
+        emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deals-agent-service
+  namespace: kayak-travel
+spec:
+  selector:
+    app: deals-agent
+  ports:
+    - port: 8003
+      targetPort: 8003
+      protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deals-agent
+  namespace: kayak-travel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deals-agent
+  template:
+    metadata:
+      labels:
+        app: deals-agent
+    spec:
+      containers:
+      - name: deals-agent
+        image: kayak-deals-agent:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8003
+        env:
+        - name: KAFKA_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: KAFKA_BOOTSTRAP
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_HOST
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 20
+          periodSeconds: 5

@@ -1,0 +1,14 @@
+﻿node_modules/
+.venv_agents/
+venv/
+.venv/
+build/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+kayak-ec2-key.pem

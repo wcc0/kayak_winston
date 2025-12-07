@@ -1,0 +1,3201 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1764573913527,87,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,85,0,10
+1764573913626,2,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,2,0,0
+1764573913629,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913630,4,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,4,0,0
+1764573913634,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573913636,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573913637,11,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,12049,384,1,1,http://localhost:5001/api/admin/billing,10,0,0
+1764573913648,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573913649,64,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,64,0,0
+1764573913713,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573913715,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573913715,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913716,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573913717,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913718,2,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,2,0,0
+1764573913720,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573913721,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573913781,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573913782,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573913783,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913784,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573913785,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573913786,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573913787,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573913787,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573913846,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573913847,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913848,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913849,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573913849,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913850,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573913851,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573913851,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573913909,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573913910,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913911,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913912,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573913912,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573913913,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573913914,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-1,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573913990,63,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,63,0,0
+1764573914054,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914055,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914056,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914057,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914057,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914058,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914059,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914060,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573914117,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914118,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914119,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914120,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914120,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914121,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914122,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914122,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573914181,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914182,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914182,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914183,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914184,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914184,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914185,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914186,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573914243,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914244,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914245,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914246,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914246,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914247,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914248,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914248,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573914305,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914306,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914307,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914307,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573914308,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-2,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914308,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914309,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-2,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573914486,77,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,77,0,1
+1764573914564,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914565,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914565,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914567,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914567,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914567,2,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,2,0,0
+1764573914569,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914569,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573914628,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914629,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914629,2,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,2,0,0
+1764573914631,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914631,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914632,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914633,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914634,62,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,62,0,0
+1764573914697,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914698,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914699,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914700,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914701,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914701,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914702,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573914703,60,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,60,0,0
+1764573914763,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914765,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914765,2,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,2,0,0
+1764573914767,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573914768,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914769,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573914770,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573914770,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573914829,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573914830,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914831,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573914832,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573914832,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-3,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573914833,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573914833,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-3,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573914987,76,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,76,0,1
+1764573915063,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915065,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915065,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915066,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573915067,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915067,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915069,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915069,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573915127,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915128,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915129,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915130,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915130,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915131,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573915132,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915132,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573915191,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915192,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915192,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915193,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573915194,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915194,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915195,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915195,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573915252,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915253,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915254,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915255,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915255,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915255,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915256,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915257,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573915315,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573915315,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915316,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915317,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915317,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-4,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915318,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915319,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-4,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915486,80,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,80,0,1
+1764573915567,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915568,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915568,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915569,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573915570,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915570,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915571,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915571,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573915629,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573915630,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915630,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915631,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915631,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915632,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915633,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915633,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573915690,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915692,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915692,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915693,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915693,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915694,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573915694,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573915695,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573915752,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915753,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915753,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915754,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573915754,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915755,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573915755,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573915756,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573915814,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573915815,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915815,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573915816,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573915817,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-5,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573915817,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573915818,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-5,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573915986,80,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,80,0,1
+1764573916066,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916067,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916067,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916068,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916069,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916069,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916070,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916070,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573916129,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573916130,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916130,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916131,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573916131,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916132,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573916132,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573916133,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573916190,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916191,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916192,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916192,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916193,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916193,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916194,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916194,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573916252,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573916252,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916253,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916254,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573916254,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916254,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916255,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916256,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573916313,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916314,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916315,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916315,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916316,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-6,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916316,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916317,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-6,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916486,78,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,78,0,1
+1764573916564,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916566,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916566,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916567,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916568,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916568,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916569,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916569,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573916628,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916629,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916630,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916630,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916631,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916631,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916632,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573916634,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573916693,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916694,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916695,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916696,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573916696,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916696,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916697,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916697,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573916755,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573916755,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916756,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916757,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573916757,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916757,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916758,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916758,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573916817,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573916818,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916818,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573916819,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573916820,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-7,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573916820,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573916821,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-7,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573916986,73,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,73,0,0
+1764573917060,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917061,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917061,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917062,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917062,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917063,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917064,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917064,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573917121,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917122,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917123,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917124,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917124,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917124,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917125,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573917126,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573917185,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917186,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917186,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917187,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917187,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917188,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573917188,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573917189,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573917247,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917248,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917249,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917250,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917250,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917250,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917251,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917252,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573917309,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917310,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917310,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917311,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917311,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-8,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917312,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917313,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-8,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917486,80,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,79,0,1
+1764573917566,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917567,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917568,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917569,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917569,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917569,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917570,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917571,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573917629,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917630,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917630,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917631,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917631,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917632,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917633,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917633,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573917690,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917692,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917692,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917693,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917693,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917693,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573917694,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917695,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573917752,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917753,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917753,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917754,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917754,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917755,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573917756,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573917756,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573917814,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573917815,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917815,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573917816,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573917816,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-9,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573917817,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573917817,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-9,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573917986,78,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,78,0,1
+1764573918064,2,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,2,0,0
+1764573918066,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918066,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918067,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918067,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918068,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918069,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918069,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573918127,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918128,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918129,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918129,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918130,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918130,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918131,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918131,60,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,60,0,0
+1764573918191,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918192,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918193,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918194,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918194,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918194,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918195,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918195,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573918253,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918254,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918255,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918256,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918256,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918256,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918257,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918257,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573918315,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918316,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918316,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918317,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918317,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-10,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918317,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918318,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-10,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573918486,78,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,78,0,0
+1764573918564,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918565,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918565,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918566,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573918567,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918567,2,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,2,0,0
+1764573918569,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918569,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573918627,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918628,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918629,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918630,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918630,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918630,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918631,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918631,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573918690,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573918690,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918691,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918692,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918692,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918692,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918693,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918693,60,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,60,0,0
+1764573918753,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918754,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918754,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918755,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918755,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918755,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918756,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918756,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573918815,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573918816,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918816,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573918817,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573918818,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-11,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573918818,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573918819,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-11,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573918986,75,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,75,0,1
+1764573919062,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919063,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919063,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919064,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573919065,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919065,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919066,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919066,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919123,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919124,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919125,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919125,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573919126,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919127,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573919127,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573919128,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919185,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919186,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919186,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919187,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919187,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919187,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919188,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919188,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919245,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919246,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919246,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919247,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919247,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919247,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919248,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919249,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573919305,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919306,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919306,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919307,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919307,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-12,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919308,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573919308,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-12,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573919486,80,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,80,0,1
+1764573919566,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919568,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919568,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919569,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919569,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919570,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919571,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919571,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573919629,2,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,2,0,0
+1764573919631,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919631,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919632,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919632,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919633,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919634,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919634,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919691,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919692,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919693,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919694,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919694,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919694,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919695,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573919695,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919752,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919753,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919754,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919754,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573919755,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919755,3,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,3,0,0
+1764573919759,2,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1057,122,1,1,http://localhost:5001/health,2,0,0
+1764573919762,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573919820,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573919821,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919821,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573919822,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573919822,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-13,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573919822,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573919823,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-13,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573919986,80,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,80,0,1
+1764573920067,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920068,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920068,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920069,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573920070,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920070,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920071,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920071,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573920128,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920129,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920129,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920130,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573920131,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920131,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920132,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920132,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573920189,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920190,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920190,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920191,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920191,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920192,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573920193,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920193,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573920250,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920251,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920252,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920252,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573920253,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920253,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920254,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920254,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573920311,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573920311,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920312,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920313,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920313,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-14,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920313,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920314,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-14,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920488,78,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,78,0,1
+1764573920566,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920567,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920568,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920569,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920569,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920569,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920570,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920570,71,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,71,0,0
+1764573920642,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920644,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920644,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920645,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920645,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920646,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573920647,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920647,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573920704,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920705,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920705,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920706,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920706,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920707,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573920707,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573920708,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573920765,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573920765,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920766,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573920767,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920767,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920767,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573920768,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573920769,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573920826,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573920827,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920828,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920828,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573920829,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-15,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573920829,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573920829,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-15,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573920986,77,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,77,0,1
+1764573921064,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921065,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921065,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921066,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573921067,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921067,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921068,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921068,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573921126,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573921127,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921127,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921128,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921128,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921128,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921129,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921129,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573921186,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921187,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921187,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921188,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921188,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921188,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921189,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921189,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573921248,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921249,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921249,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921250,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921250,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921250,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921251,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921251,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573921310,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573921310,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921311,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921312,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921312,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-16,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921312,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921313,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-16,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921486,76,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,76,0,0
+1764573921563,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921564,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921564,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921565,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573921566,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921566,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921567,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921567,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573921626,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921627,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921627,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921628,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921628,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921629,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573921629,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921629,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573921687,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921688,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921688,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921689,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921689,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921690,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573921691,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921691,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573921748,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573921748,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921749,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921749,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573921750,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921750,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921751,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921751,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573921809,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573921810,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921810,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573921811,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573921811,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-17,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573921811,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573921812,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-17,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573921989,81,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,81,0,1
+1764573922070,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922071,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922071,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922072,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573922073,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922073,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573922074,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922074,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573922132,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922133,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922133,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922134,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922134,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922134,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573922135,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922135,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922192,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573922192,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922193,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922194,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922194,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922194,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573922195,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922195,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922252,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922253,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922254,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922254,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922254,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922255,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922255,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922256,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573922312,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922313,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922313,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922314,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922314,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-18,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922315,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922316,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-18,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922487,77,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,77,0,1
+1764573922565,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922566,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922566,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922567,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922567,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922568,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573922569,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922569,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922627,0,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,0,0,0
+1764573922627,1,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922628,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922628,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922629,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922629,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922629,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573922629,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922686,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922687,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922687,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922688,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922688,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922689,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922689,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573922690,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922747,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922748,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922749,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922749,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922750,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922750,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922750,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573922751,57,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,57,0,0
+1764573922808,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573922809,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573922809,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922810,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573922810,1,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-19,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573922811,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573922811,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-19,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573922987,76,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,76,0,1
+1764573923063,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573923064,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923064,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573923066,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573923066,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923067,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573923068,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573923068,59,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,59,0,0
+1764573923128,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573923130,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923130,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573923131,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573923131,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923131,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573923132,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573923132,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573923189,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573923190,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923190,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573923191,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573923191,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923191,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573923192,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0
+1764573923192,58,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,58,0,0
+1764573923250,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573923251,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923252,0,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923252,1,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,1,0,0
+1764573923253,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923253,0,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,0,0,0
+1764573923253,1,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1057,122,1,1,http://localhost:5001/health,1,0,0
+1764573923254,56,Valid Login - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1609,239,1,1,http://localhost:5001/api/admin/auth/login,56,0,0
+1764573923310,1,Invalid Login - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1011,239,1,1,http://localhost:5001/api/admin/auth/login,1,0,0
+1764573923311,0,No Token Access - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",1029,131,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923311,1,Valid Users List - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,3253,382,1,1,http://localhost:5001/api/admin/users,1,0,0
+1764573923312,0,Invalid Route - SHOULD FAIL 404,404,Not Found,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",998,397,1,1,http://localhost:5001/api/admin/nonexistent-endpoint,0,0,0
+1764573923312,0,Invalid Token - SHOULD FAIL 401,401,Unauthorized,Mixed Test Scenarios 1-20,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",999,173,1,1,http://localhost:5001/api/admin/users,0,0,0
+1764573923312,1,Valid Billing - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,12061,384,1,1,http://localhost:5001/api/admin/billing,1,0,0
+1764573923313,0,Health Check - SHOULD PASS,200,OK,Mixed Test Scenarios 1-20,text,true,,1057,122,1,1,http://localhost:5001/health,0,0,0

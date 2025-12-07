@@ -1,0 +1,56 @@
+{
+  "name": "kayak-travel-platform",
+  "version": "2.0.0",
+  "description": "Full-Stack Distributed Travel Booking Platform - Kayak Clone with Admin Dashboard",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "backend/billing",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd billing && npm install && cd ../../frontend && npm install",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm start",
+    "start:billing": "cd backend/billing && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test",
+    "seed": "cd backend && npm run seed",
+    "init-db": "cd backend && npm run init-db",
+    "benchmark:redis": "cd backend && npm run benchmark:redis",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "k8s:deploy": "kubectl apply -f backend/kubernetes/",
+    "k8s:delete": "kubectl delete -f backend/kubernetes/",
+    "clean": "rm -rf node_modules backend/node_modules backend/billing/node_modules frontend/node_modules"
+  },
+  "keywords": [
+    "kayak",
+    "travel",
+    "booking",
+    "distributed-systems",
+    "microservices",
+    "kafka",
+    "redis",
+    "mongodb",
+    "mysql",
+    "kubernetes",
+    "docker",
+    "react",
+    "express"
+  ],
+  "author": "Kayak Development Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+

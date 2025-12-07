@@ -1,0 +1,24 @@
+from sqlmodel import SQLModel
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlmodel.ext.asyncio.session import AsyncSession
+from sqlalchemy.orm import sessionmaker
+import os
+
+DB_PATH = os.environ.get('DEALS_DB', '/app/data/deals.db')
+POSTGRES_DSN = os.environ.get('POSTGRES_DSN', '')
+
+if POSTGRES_DSN:
+    ASYNC_DSN = POSTGRES_DSN
+else:
+    ASYNC_DSN = f"sqlite+aiosqlite:///{DB_PATH}"
+
+engine = create_async_engine(ASYNC_DSN, echo=False, future=True)
+async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+
+async def init_db():
+    os.makedirs(os.path.dirname(DB_PATH) or '.', exist_ok=True)
+    async with engine.begin() as conn:
+        await conn.run_sync(SQLModel.metadata.create_all)
+
+async def get_session() -> AsyncSession:
+    return async_session()

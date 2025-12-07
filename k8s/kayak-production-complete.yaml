@@ -1,0 +1,1268 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kayak-travel
+  labels:
+    app: kayak
+    environment: production
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kayak-config
+  namespace: kayak-travel
+  labels:
+    app: kayak
+data:
+  NODE_ENV: "production"
+  ENVIRONMENT: "production"
+  DEBUG: "false"
+  
+  # MySQL Configuration
+  MYSQL_HOST: "mysql-service"
+  MYSQL_PORT: "3306"
+  MYSQL_DATABASE: "kayak_admin"
+  MYSQL_USER: "root"
+  
+  # MongoDB Configuration
+  MONGODB_HOST: "mongodb-service"
+  MONGODB_PORT: "27017"
+  MONGODB_DATABASE: "kayak_admin"
+  MONGODB_URI: "mongodb://mongodb-service:27017/kayak_admin"
+  
+  # Redis Configuration
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  REDIS_URL: "redis://redis-service:6379"
+  REDIS_TTL: "600"
+  CACHE_ENABLED: "true"
+  CACHE_TTL: "600"
+  
+  # Backend Configuration
+  BACKEND_PORT: "5001"
+  LLM_ENABLED: "true"
+  LLM_MODEL: "llama3.2:latest"
+  
+  # Frontend Configuration
+  FRONTEND_PORT: "3001"
+  REACT_APP_API_URL: "http://backend-service:5001"
+  
+  # Agents Configuration
+  CONCIERGE_PORT: "8002"
+  DEALS_PORT: "8003"
+  AGENT_HOST: "0.0.0.0"
+  
+  # Ollama / LLM Configuration
+  OLLAMA_API_URL: "http://ollama-service:11434"
+  OLLAMA_MODEL: "llama3.2:latest"
+  
+  # Kafka Configuration
+  KAFKA_BOOTSTRAP: "kafka-service:9092"
+  KAFKA_BROKERS: "kafka-service:9092"
+  KAFKA_CONSUMER_GROUP: "kayak-consumers"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kayak-secrets
+  namespace: kayak-travel
+  labels:
+    app: kayak
+type: Opaque
+stringData:
+  MYSQL_PASSWORD: "kayak_admin_2024"
+  MONGO_PASSWORD: "kayak_mongo_2024"
+  API_KEY: "kayak_production_key_2024"
+  API_SECRET: "kayak_production_secret_2024"
+
+---
+# ============================================================================
+# MySQL Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: database
+spec:
+  selector:
+    app: kayak
+    component: mysql
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+      name: mysql
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: mysql
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+        - name: mysql-init
+          mountPath: /docker-entrypoint-initdb.d
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - mysqladmin ping -h localhost
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - mysqladmin ping -h localhost
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      volumes:
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+      - name: mysql-init
+        configMap:
+          name: mysql-init-scripts
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: kayak-travel
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init-scripts
+  namespace: kayak-travel
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS kayak_admin;
+    USE kayak_admin;
+    
+    CREATE TABLE IF NOT EXISTS hotels (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      source VARCHAR(50),
+      listing_id VARCHAR(100) UNIQUE,
+      name VARCHAR(255) NOT NULL,
+      city VARCHAR(100),
+      country VARCHAR(100),
+      room_type VARCHAR(50),
+      price DECIMAL(10, 2),
+      price_currency VARCHAR(3) DEFAULT 'USD',
+      availability_days INT,
+      reviews_count INT,
+      rating DECIMAL(3, 2),
+      latitude DECIMAL(10, 8),
+      longitude DECIMAL(11, 8),
+      neighbourhood VARCHAR(255),
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      INDEX idx_listing_id (listing_id),
+      INDEX idx_city (city),
+      INDEX idx_price (price)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    
+    CREATE TABLE IF NOT EXISTS flights (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      source VARCHAR(50),
+      flight_id VARCHAR(100) UNIQUE,
+      airline VARCHAR(100),
+      departure_airport VARCHAR(10),
+      arrival_airport VARCHAR(10),
+      departure_time DATETIME,
+      arrival_time DATETIME,
+      price DECIMAL(10, 2),
+      price_currency VARCHAR(3) DEFAULT 'USD',
+      distance_km INT,
+      duration_minutes INT,
+      seats_available INT,
+      class VARCHAR(50) DEFAULT 'economy',
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      INDEX idx_flight_id (flight_id),
+      INDEX idx_departure (departure_airport),
+      INDEX idx_arrival (arrival_airport),
+      INDEX idx_price (price)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    
+    CREATE TABLE IF NOT EXISTS airports (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      iata VARCHAR(3) UNIQUE NOT NULL,
+      icao VARCHAR(4),
+      name VARCHAR(255),
+      city VARCHAR(100),
+      country VARCHAR(100),
+      latitude DECIMAL(10, 8),
+      longitude DECIMAL(11, 8),
+      timezone VARCHAR(50),
+      altitude INT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      INDEX idx_iata (iata),
+      INDEX idx_city (city)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+---
+# ============================================================================
+# MongoDB Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: database
+spec:
+  selector:
+    app: kayak
+    component: mongodb
+  type: ClusterIP
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+      name: mongodb
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: mongodb
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:7.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MONGO_PASSWORD
+        - name: MONGO_INITDB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MONGODB_DATABASE
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - mongosh --eval 'db.adminCommand("ping")'
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - mongosh --eval 'db.adminCommand("ping")'
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongodb-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+  namespace: kayak-travel
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+# ============================================================================
+# Redis Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: cache
+spec:
+  selector:
+    app: kayak
+    component: redis
+  type: ClusterIP
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: redis
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: redis
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 6379
+        command:
+        - redis-server
+        - "--appendonly"
+        - "yes"
+        - "--maxmemory"
+        - "512mb"
+        - "--maxmemory-policy"
+        - "allkeys-lru"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          exec:
+            command:
+            - redis-cli
+            - ping
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - redis-cli
+            - ping
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+      volumes:
+      - name: redis-data
+        persistentVolumeClaim:
+          claimName: redis-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: kayak-travel
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+# ============================================================================
+# Kafka Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: messaging
+spec:
+  selector:
+    app: kayak
+    component: kafka
+  type: ClusterIP
+  ports:
+    - port: 9092
+      targetPort: 9092
+      protocol: TCP
+      name: kafka
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: kafka
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: kafka
+    spec:
+      containers:
+      - name: kafka
+        image: confluentinc/cp-kafka:7.5.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9092
+        env:
+        - name: KAFKA_BROKER_ID
+          value: "1"
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: "zookeeper-service:2181"
+        - name: KAFKA_ADVERTISED_LISTENERS
+          value: "PLAINTEXT://kafka-service:9092"
+        - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+          value: "PLAINTEXT:PLAINTEXT"
+        - name: KAFKA_INTER_BROKER_LISTENER_NAME
+          value: "PLAINTEXT"
+        - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+          value: "1"
+        - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
+          value: "true"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          tcpSocket:
+            port: 9092
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          tcpSocket:
+            port: 9092
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      initContainers:
+      - name: wait-for-zookeeper
+        image: busybox
+        command: ['sh', '-c', 'until nc -z zookeeper-service:2181; do echo waiting for zookeeper; sleep 2; done']
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: zookeeper
+spec:
+  selector:
+    app: kayak
+    component: zookeeper
+  type: ClusterIP
+  ports:
+    - port: 2181
+      targetPort: 2181
+      protocol: TCP
+      name: zookeeper
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: zookeeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: zookeeper
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: zookeeper
+    spec:
+      containers:
+      - name: zookeeper
+        image: confluentinc/cp-zookeeper:7.5.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2181
+        env:
+        - name: ZOOKEEPER_CLIENT_PORT
+          value: "2181"
+        - name: ZOOKEEPER_SYNC_LIMIT
+          value: "2"
+        - name: ZOOKEEPER_INIT_LIMIT
+          value: "5"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          tcpSocket:
+            port: 2181
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+# ============================================================================
+# Ollama LLM Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: llm
+spec:
+  selector:
+    app: kayak
+    component: ollama
+  type: ClusterIP
+  ports:
+    - port: 11434
+      targetPort: 11434
+      protocol: TCP
+      name: ollama
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: ollama
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 11434
+        env:
+        - name: OLLAMA_HOST
+          value: "0.0.0.0:11434"
+        volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        livenessProbe:
+          httpGet:
+            path: /api/tags
+            port: 11434
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/tags
+            port: 11434
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      volumes:
+      - name: ollama-data
+        persistentVolumeClaim:
+          claimName: ollama-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-pvc
+  namespace: kayak-travel
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# ============================================================================
+# Backend Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: backend
+spec:
+  selector:
+    app: kayak
+    component: backend
+  type: ClusterIP
+  ports:
+    - port: 5001
+      targetPort: 5001
+      protocol: TCP
+      name: backend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kayak
+      component: backend
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: backend
+    spec:
+      containers:
+      - name: backend
+        image: kayak-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5001
+        env:
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: NODE_ENV
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_HOST
+        - name: MYSQL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_PORT
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_DATABASE
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MONGODB_URI
+        - name: REDIS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: REDIS_URL
+        - name: KAFKA_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: KAFKA_BOOTSTRAP
+        - name: OLLAMA_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: OLLAMA_API_URL
+        - name: CACHE_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: CACHE_ENABLED
+        - name: CACHE_TTL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: CACHE_TTL
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+# ============================================================================
+# Frontend Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: frontend
+spec:
+  selector:
+    app: kayak
+    component: frontend
+  type: ClusterIP
+  ports:
+    - port: 3001
+      targetPort: 3001
+      protocol: TCP
+      name: frontend
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kayak
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: kayak-frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3001
+        env:
+        - name: REACT_APP_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: REACT_APP_API_URL
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3001
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+# ============================================================================
+# Concierge Agent Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: concierge-agent-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: agent
+spec:
+  selector:
+    app: kayak
+    component: concierge-agent
+  type: ClusterIP
+  ports:
+    - port: 8002
+      targetPort: 8002
+      protocol: TCP
+      name: concierge
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: concierge-agent
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: concierge-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: concierge-agent
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: concierge-agent
+    spec:
+      containers:
+      - name: concierge-agent
+        image: kayak-concierge-agent:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8002
+        env:
+        - name: OLLAMA_API_URL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: OLLAMA_API_URL
+        - name: OLLAMA_MODEL
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: OLLAMA_MODEL
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_HOST
+        - name: MYSQL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_PORT
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_DATABASE
+        - name: KAFKA_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: KAFKA_BOOTSTRAP
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8002
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+# ============================================================================
+# Deals Agent Service (MANDATORY)
+# ============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: deals-agent-service
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: agent
+spec:
+  selector:
+    app: kayak
+    component: deals-agent
+  type: ClusterIP
+  ports:
+    - port: 8003
+      targetPort: 8003
+      protocol: TCP
+      name: deals
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deals-agent
+  namespace: kayak-travel
+  labels:
+    app: kayak
+    component: deals-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kayak
+      component: deals-agent
+  template:
+    metadata:
+      labels:
+        app: kayak
+        component: deals-agent
+    spec:
+      containers:
+      - name: deals-agent
+        image: kayak-deals-agent:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8003
+        env:
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_HOST
+        - name: MYSQL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_PORT
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kayak-secrets
+              key: MYSQL_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: MYSQL_DATABASE
+        - name: KAFKA_BOOTSTRAP
+          valueFrom:
+            configMapKeyRef:
+              name: kayak-config
+              key: KAFKA_BOOTSTRAP
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8003
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+# ============================================================================
+# Horizontal Pod Autoscaler (Optional but recommended for production)
+# ============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+  namespace: kayak-travel
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend-hpa
+  namespace: kayak-travel
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 75
+
+---
+# ============================================================================
+# NetworkPolicy (Optional but recommended for production security)
+# ============================================================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kayak-network-policy
+  namespace: kayak-travel
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: kayak-travel
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kayak-travel
+  - to:
+    - namespaceSelector: {}
+    ports:
+    - protocol: TCP
+      port: 53
