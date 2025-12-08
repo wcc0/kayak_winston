@@ -38,6 +38,11 @@ const Booking = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { user } = useAuth();
+  
+  // Determine actual booking type (handle bundle route)
+  const location = window.location;
+  const actualType = type || (location.pathname.includes('/bundle') ? 'bundle' : null);
+  const actualId = id || 'bundle-1';
   const [activeStep, setActiveStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [confirmationNumber, setConfirmationNumber] = useState('');
@@ -60,7 +65,44 @@ const Booking = () => {
       try {
         let foundItem = null;
         
-        if (type === 'flights') {
+        // Handle bundle bookings from AI Assistant
+        if (actualType === 'bundle') {
+          if (storedBooking && storedBooking.bundle) {
+            const bundle = storedBooking.bundle;
+            foundItem = {
+              id: bundle.bundle_id || 'bundle-1',
+              name: `${bundle.flight.airline} Flight + ${bundle.hotel.name}`,
+              type: 'bundle',
+              flight: {
+                airline: bundle.flight.airline,
+                from: bundle.flight.origin,
+                to: bundle.flight.destination,
+                price: bundle.flight.price,
+                stops: bundle.flight.stops
+              },
+              hotel: {
+                name: bundle.hotel.name,
+                location: `${bundle.hotel.city}${bundle.hotel.neighbourhood ? ', ' + bundle.hotel.neighbourhood : ''}`,
+                price: bundle.hotel.price_per_night,
+                petFriendly: bundle.hotel.pet_friendly,
+                hasBreakfast: bundle.hotel.has_breakfast,
+                nearTransit: bundle.hotel.near_transit
+              },
+              price: bundle.total_price,
+              fit_score: bundle.fit_score,
+              why_this: bundle.why_this,
+              what_to_watch: bundle.what_to_watch
+            };
+            setItem(foundItem);
+            setBookingError('');
+            return;
+          } else {
+            setBookingError('Bundle information not found. Please select a bundle from AI Assistant.');
+            return;
+          }
+        }
+        
+        if (actualType === 'flights') {
           const response = await travelerAPI.getAllFlights();
           if (response.data.success) {
             const flight = response.data.data.find(f => f.flight_id === id);
@@ -77,7 +119,7 @@ const Booking = () => {
               setAvailableSeats(flight.available_seats);
             }
           }
-        } else if (type === 'hotels') {
+        } else if (actualType === 'hotels') {
           const response = await travelerAPI.getAllHotels();
           if (response.data.success) {
             const hotel = response.data.data.find(h => h.hotel_id === id);
@@ -92,7 +134,7 @@ const Booking = () => {
               setAvailableSeats(hotel.available_rooms);
             }
           }
-        } else if (type === 'cars') {
+        } else if (actualType === 'cars') {
           const response = await travelerAPI.getAllCars();
           if (response.data.success) {
             const car = response.data.data.find(c => c.car_id === id);
@@ -134,7 +176,7 @@ const Booking = () => {
       }
     };
     fetchItem();
-  }, [type, id]);
+  }, [actualType, actualId]);
 
   // Additional travelers state
   const [additionalTravelers, setAdditionalTravelers] = useState([]);
@@ -227,19 +269,20 @@ const Booking = () => {
   };
 
   const updateInventory = () => {
-    if (type === 'flights') {
+    if (actualType === 'flights') {
       const flights = JSON.parse(localStorage.getItem('flightsInventory') || '[]');
-      const updated = flights.map(f => f.id === id ? { ...f, seatsAvailable: f.seatsAvailable - passengers } : f);
+      const updated = flights.map(f => f.id === actualId ? { ...f, seatsAvailable: f.seatsAvailable - passengers } : f);
       localStorage.setItem('flightsInventory', JSON.stringify(updated));
-    } else if (type === 'hotels') {
+    } else if (actualType === 'hotels') {
       const hotels = JSON.parse(localStorage.getItem('hotelsInventory') || '[]');
-      const updated = hotels.map(h => h.id === id ? { ...h, roomsAvailable: h.roomsAvailable - 1 } : h);
+      const updated = hotels.map(h => h.id === actualId ? { ...h, roomsAvailable: h.roomsAvailable - 1 } : h);
       localStorage.setItem('hotelsInventory', JSON.stringify(updated));
-    } else {
+    } else if (actualType === 'cars') {
       const cars = JSON.parse(localStorage.getItem('carsInventory') || '[]');
-      const updated = cars.map(c => c.id === id ? { ...c, carsAvailable: c.carsAvailable - 1 } : c);
+      const updated = cars.map(c => c.id === actualId ? { ...c, carsAvailable: c.carsAvailable - 1 } : c);
       localStorage.setItem('carsInventory', JSON.stringify(updated));
     }
+    // Bundle bookings don't update inventory (handled by backend)
   };
 
   const handleNext = () => {
@@ -268,13 +311,18 @@ const Booking = () => {
     
     try {
       // Prepare booking data for backend
+      let bookingType = 'BUNDLE';
+      if (actualType === 'flights') bookingType = 'FLIGHT';
+      else if (actualType === 'hotels') bookingType = 'HOTEL';
+      else if (actualType === 'cars') bookingType = 'CAR';
+      
       const bookingData = {
         user_id: user.user_id,
-        booking_type: type.toUpperCase().slice(0, -1), // 'flights' -> 'FLIGHT'
-        reference_id: id,
+        booking_type: bookingType,
+        reference_id: actualId || 'bundle-1',
         provider_name: providerName,
         start_date: new Date().toISOString().split('T')[0],
-        end_date: type === 'hotels' ? new Date(Date.now() + 86400000).toISOString().split('T')[0] : null,
+        end_date: actualType === 'hotels' || actualType === 'bundle' ? new Date(Date.now() + 86400000).toISOString().split('T')[0] : null,
         quantity: passengers,
         unit_price: providerPrice,
         total_price: getTotalPrice(),
@@ -313,13 +361,15 @@ const Booking = () => {
   };
 
   const getIcon = () => {
-    if (type === 'flights') return <Flight sx={{ fontSize: 40, color: 'primary.main' }} />;
-    if (type === 'hotels') return <Hotel sx={{ fontSize: 40, color: 'primary.main' }} />;
+    if (actualType === 'flights') return <Flight sx={{ fontSize: 40, color: 'primary.main' }} />;
+    if (actualType === 'hotels') return <Hotel sx={{ fontSize: 40, color: 'primary.main' }} />;
+    if (actualType === 'bundle') return <><Flight sx={{ fontSize: 30, color: 'primary.main' }} /><Hotel sx={{ fontSize: 30, color: 'primary.main' }} /></>;
     return <DirectionsCar sx={{ fontSize: 40, color: 'primary.main' }} />;
   };
 
   const getSubtotal = () => {
-    if (type === 'flights') return providerPrice * passengers;
+    if (actualType === 'flights') return providerPrice * passengers;
+    if (actualType === 'bundle' && item) return item.price || providerPrice;
     return providerPrice;
   };
 
@@ -389,7 +439,7 @@ const Booking = () => {
               {activeStep === 0 && (
                 <>
                   {/* Passenger Count for Flights */}
-                  {type === 'flights' && (
+                  {actualType === 'flights' && (
                     <Box sx={{ mb: 4, p: 2, bgcolor: 'grey.100', borderRadius: 2 }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <Typography variant="h6" fontWeight={600}>Passengers</Typography>
@@ -557,7 +607,7 @@ const Booking = () => {
                 <Button
                   variant="contained"
                   onClick={handleNext}
-                  disabled={loading || (type === 'flights' && passengers > availableSeats)}
+                  disabled={loading || (actualType === 'flights' && passengers > availableSeats)}
                 >
                   {loading 
                     ? 'Processing...' 
@@ -587,7 +637,7 @@ const Booking = () => {
                 </Box>
                 <Divider sx={{ my: 2 }} />
                 
-                {type === 'flights' && (
+                {actualType === 'flights' && (
                   <>
                     <Typography color="text.secondary">Flight</Typography>
                     <Typography fontWeight={500} gutterBottom>{item?.flightNumber}</Typography>
@@ -600,7 +650,7 @@ const Booking = () => {
                   </>
                 )}
                 
-                {type === 'hotels' && (
+                {actualType === 'hotels' && (
                   <>
                     <Typography color="text.secondary">Location</Typography>
                     <Typography fontWeight={500} gutterBottom>{item?.location}</Typography>
@@ -609,7 +659,7 @@ const Booking = () => {
                   </>
                 )}
                 
-                {type === 'cars' && (
+                {actualType === 'cars' && (
                   <>
                     <Typography color="text.secondary">Vehicle</Typography>
                     <Typography fontWeight={500} gutterBottom>{item?.model}</Typography>
@@ -617,10 +667,62 @@ const Booking = () => {
                     <Typography fontWeight={500} gutterBottom>{item?.carsAvailable}</Typography>
                   </>
                 )}
+                
+                {actualType === 'bundle' && item && (
+                  <>
+                    <Box sx={{ mb: 2 }}>
+                      <Typography variant="subtitle2" color="primary" sx={{ fontWeight: 600, mb: 1 }}>
+                        ✈️ Flight
+                      </Typography>
+                      <Typography color="text.secondary">Airline</Typography>
+                      <Typography fontWeight={500}>{item.flight.airline}</Typography>
+                      <Typography color="text.secondary">Route</Typography>
+                      <Typography fontWeight={500} gutterBottom>{item.flight.from} → {item.flight.to}</Typography>
+                      <Typography color="text.secondary">Stops</Typography>
+                      <Typography fontWeight={500} gutterBottom>{item.flight.stops}</Typography>
+                    </Box>
+                    
+                    <Box sx={{ mb: 2 }}>
+                      <Typography variant="subtitle2" color="primary" sx={{ fontWeight: 600, mb: 1 }}>
+                        🏨 Hotel
+                      </Typography>
+                      <Typography color="text.secondary">Name</Typography>
+                      <Typography fontWeight={500}>{item.hotel.name}</Typography>
+                      <Typography color="text.secondary">Location</Typography>
+                      <Typography fontWeight={500} gutterBottom>{item.hotel.location}</Typography>
+                      {item.hotel.petFriendly && (
+                        <Typography variant="caption" sx={{ display: 'block', color: 'success.main' }}>
+                          🐾 Pet Friendly
+                        </Typography>
+                      )}
+                      {item.hotel.hasBreakfast && (
+                        <Typography variant="caption" sx={{ display: 'block', color: 'success.main' }}>
+                          🍳 Breakfast Included
+                        </Typography>
+                      )}
+                    </Box>
+                    
+                    {item.fit_score && (
+                      <Box sx={{ mb: 2, p: 1.5, bgcolor: 'primary.light', borderRadius: 1 }}>
+                        <Typography variant="caption" color="white" sx={{ fontWeight: 600 }}>
+                          Match Score: {item.fit_score}%
+                        </Typography>
+                      </Box>
+                    )}
+                    
+                    {item.why_this && (
+                      <Alert severity="info" sx={{ mb: 1 }}>
+                        <Typography variant="caption">
+                          💡 {item.why_this}
+                        </Typography>
+                      </Alert>
+                    )}
+                  </>
+                )}
 
                 <Divider sx={{ my: 2 }} />
                 
-                {type === 'flights' ? (
+                {actualType === 'flights' ? (
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                     <Typography>${providerPrice} × {passengers}</Typography>
                     <Typography>${providerPrice * passengers}</Typography>

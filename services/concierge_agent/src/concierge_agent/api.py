@@ -23,16 +23,13 @@ class HotelModel(SQLModel, table=True):
     external_id: Optional[str] = None
     listing_id: Optional[str] = None
     name: Optional[str] = None
+    price_per_night: Optional[float] = None
     city: Optional[str] = None
     neighbourhood: Optional[str] = None
-    price_per_night: float = 0.0
-    availability: int = 30
-    amenities: Optional[str] = None
-    is_pet_friendly: bool = False
-    has_breakfast: bool = False
-    near_transit: bool = False
-    avg_price_30d: Optional[float] = None
-    source: Optional[str] = None
+    availability: Optional[int] = None
+    is_pet_friendly: Optional[bool] = False
+    has_breakfast: Optional[bool] = False
+    near_transit: Optional[bool] = False
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
@@ -40,15 +37,13 @@ class FlightModel(SQLModel, table=True):
     __tablename__ = "flightmodel"
     id: Optional[int] = SQLField(default=None, primary_key=True)
     external_id: Optional[str] = None
-    origin: str
-    destination: str
+    listing_id: Optional[str] = None
+    origin: Optional[str] = None
+    destination: Optional[str] = None
     airline: Optional[str] = None
-    price: float
-    seats_available: int = 100
-    stops: int = 0
+    price: Optional[float] = None
+    stops: Optional[int] = 0
     duration_minutes: Optional[int] = None
-    avg_price_30d: Optional[float] = None
-    source: Optional[str] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
@@ -63,8 +58,9 @@ DEALS_DB_CANDIDATES = [
     "/shared/deals.db",  # K8s shared volume
     "/app/data/deals.db",  # K8s local volume
     "/data/deals.db",  # K8s mount point
-    r"C:\Users\winston\kayak2\jottx\services\deals_agent\data\normalized\deals.db",  # Windows local
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "services", "deals_agent", "data", "normalized", "deals.db")),
+    r"C:\Users\winston\kayak2\kayak_winston\services\deals_agent\deals.db",  # Windows local - kayak_winston
+    r"C:\Users\winston\kayak2\jottx\services\deals_agent\data\normalized\deals.db",  # Windows local - jottx
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "deals_agent", "deals.db")),
 ]
 
 DEALS_DB_PATH = None
@@ -361,10 +357,11 @@ async def _compose_bundles(req: BundleRequest) -> List[BundleResponse]:
     return bundles[: req.max_results]
 
 
-@app.post('/bundles')
-async def bundles(req: BundleRequest):
-    bundles = await _compose_bundles(req)
-    return {'success': True, 'data': bundles}
+# OLD ENDPOINT - REPLACED BY NEW IMPLEMENTATION BELOW
+# @app.post('/bundles')
+# async def bundles(req: BundleRequest):
+#     bundles = await _compose_bundles(req)
+#     return {'success': True, 'data': bundles}
 
 
 @app.post('/watch')
@@ -416,278 +413,323 @@ async def watch_checker():
 
 @app.post('/chat')
 async def chat(req: ChatRequest):
-    """Chat endpoint - requires Ollama LLM for all responses, no fallbacks"""
+    """Chat endpoint - LLM responses + auto-fetch bundles for travel queries"""
     if not llm_client.LLM_ENABLED:
         raise HTTPException(
             status_code=503,
-            detail="LLM service is not enabled. Ollama must be running at http://localhost:11434 with llama3.2:latest model"
+            detail="LLM service is not enabled. Ollama must be running at http://localhost:11434"
         )
     
     session = sessions.setdefault(req.session_id, [])
     session.append({'sender': 'user', 'text': req.message})
 
-    text = req.message.strip()
-    lower = text.lower()
-    import re
-
-    # Extract structured parameters from user input
-    destination = None
-    city_keywords = [
-        'san francisco', 'sf', 'los angeles', 'la', 'seattle', 'boston', 'chicago',
-        'manhattan', 'brooklyn', 'queens', 'nyc', 'new york', 'harlem', 'soho', 'chelsea',
-        'miami', 'denver', 'austin', 'portland', 'philadelphia'
-    ]
-    for city in city_keywords:
-        if city in lower:
-            destination = city
-            break
+    # Load all available data for LLM context
+    engine = get_deals_engine()
+    with Session(engine) as sess:
+        hotels = sess.exec(select(HotelModel).limit(100)).all()
+        flights = sess.exec(select(FlightModel).limit(100)).all()
     
-    constraints = []
-    if 'pet' in lower or 'dog' in lower or 'cat' in lower:
-        constraints.append('pet-friendly')
-    if 'breakfast' in lower:
-        constraints.append('breakfast')
-    if 'transit' in lower or 'subway' in lower or 'metro' in lower:
-        constraints.append('near-transit')
-    if 'wifi' in lower or 'internet' in lower:
-        constraints.append('wifi')
+    # Build rich context JSON for LLM
+    hotels_context = json.dumps([
+        {
+            'name': h.name,
+            'city': h.city,
+            'neighbourhood': h.neighbourhood,
+            'price_per_night': h.price_per_night,
+            'pet_friendly': h.is_pet_friendly,
+            'has_breakfast': h.has_breakfast,
+            'near_transit': h.near_transit,
+            'availability': h.availability
+        }
+        for h in hotels
+    ], indent=2)
     
-    budget_match = re.search(r'\$?\s*(\d+)', text)
-    budget = float(budget_match.group(1)) if budget_match else None
+    flights_context = json.dumps([
+        {
+            'origin': f.origin,
+            'destination': f.destination,
+            'airline': f.airline,
+            'price': f.price,
+            'stops': f.stops
+        }
+        for f in flights
+    ], indent=2)
+    
+    # First: Use LLM to determine if this is a travel search and extract parameters
+    # Key change: Always try to extract location data, even if user is vague
+    extraction_prompt = f"""Analyze this user message: "{req.message}"
 
-    # Check if user is asking for deals
-    if any(w in lower for w in ['find', 'search', 'show', 'get', 'book', 'hotel', 'flight']):
-        # Fetch actual deals from shared deals database
-        engine = get_deals_engine()
-        with Session(engine) as sess:
-            hotels_stmt = select(HotelModel).limit(500)
-            hotels_query = sess.exec(hotels_stmt).all()
-            
-            flights_stmt = select(FlightModel).limit(500)
-            flights_query = sess.exec(flights_stmt).all()
-            
-            all_hotels = [
-                {
-                    'id': h.id,
-                    'type': 'hotel',
-                    'name': h.name,
-                    'neighbourhood': h.neighbourhood,
-                    'price': h.price_per_night,
-                    'availability': h.availability,
-                    'is_pet_friendly': h.is_pet_friendly,
-                    'has_breakfast': h.has_breakfast,
-                    'near_transit': h.near_transit,
-                    'source': h.source
-                }
-                for h in hotels_query
-            ]
-            
-            all_flights = [
-                {
-                    'id': f.id,
-                    'type': 'flight',
-                    'origin': f.origin,
-                    'destination': f.destination,
-                    'airline': f.airline,
-                    'price': f.price,
-                    'seats_available': f.seats_available,
-                    'stops': f.stops,
-                }
-                for f in flights_query
-            ]
-            
-            # Apply filters
-            valid_hotels = [d for d in all_hotels if d.get('price') and d.get('price') > 0]
-            
-            if destination:
-                valid_hotels = [d for d in valid_hotels if d.get('neighbourhood') and destination.lower() in str(d.get('neighbourhood', '')).lower()]
-            
-            if budget:
-                valid_hotels = [d for d in valid_hotels if d.get('price', float('inf')) <= budget]
-            
-            if constraints:
-                filtered = []
-                for h in valid_hotels:
-                    match = False
-                    for c in constraints:
-                        if c == 'pet-friendly' and h.get('is_pet_friendly'):
-                            match = True
-                        elif c == 'breakfast' and h.get('has_breakfast'):
-                            match = True
-                        elif c == 'near-transit' and h.get('near_transit'):
-                            match = True
-                        elif c == 'wifi':
-                            match = True
-                    if match:
-                        filtered.append(h)
-                valid_hotels = filtered if filtered else valid_hotels
-            
-            if not valid_hotels and not all_hotels:
-                raise HTTPException(
-                    status_code=503,
-                    detail="No hotel data available in database. Deals Agent may not be running."
-                )
-            
-            # Prepare context for LLM
-            top_hotels = sorted(valid_hotels, key=lambda h: h.get('price', float('inf')))[:5] if valid_hotels else []
-            
-            deals_json = json.dumps(top_hotels, indent=2)
-            available_cities = set(str(d.get('neighbourhood', 'Unknown')) for d in all_hotels if d.get('price', 0) > 0)
-            
-            llm_prompt = f"""User request: "{text}"
+ALWAYS extract locations if present (even if vague). Look for: origins (SFO, LAX, NYC, etc), destinations, dates, budget, constraints.
 
-Database info:
-- Total hotels: {len(all_hotels)}
-- Matching hotels: {len(valid_hotels)}
-- Available neighborhoods: {', '.join(sorted(list(available_cities))[:10])}
+Respond ONLY with valid JSON:
+{{
+  "is_travel_query": true/false,
+  "has_location": true/false,
+  "origin": "extracted or null",
+  "destination": "extracted or null", 
+  "budget": number or null,
+  "constraints": ["pet-friendly", "breakfast", "near transit"] or [],
+  "max_results": 3
+}}
 
-Top deals found:
-{deals_json}
+Mark is_travel_query=true if clearly asking for recommendations.
+Mark has_location=true if ANY origin or destination is mentioned."""
 
-Constraints requested: {', '.join(constraints) if constraints else 'none'}
-Budget: ${budget if budget else 'no budget specified'}
-
-Respond naturally as a KAYAK travel concierge. If matching deals exist, highlight the best options with price/location. If no matches found, suggest the best alternatives. Keep to 3-4 sentences."""
+    intent_response = await llm_client.generate(extraction_prompt, max_tokens=200, temperature=0.3)
+    
+    bundles = None
+    try:
+        # Try to parse JSON from LLM response
+        json_match = intent_response.find('{')
+        if json_match >= 0:
+            json_str = intent_response[json_match:]
+            intent_data = json.loads(json_str)
             
-            reply = await llm_client.generate(llm_prompt, max_tokens=250, temperature=0.6)
-            
-            if not reply or len(reply.strip()) < 10:
-                raise HTTPException(
-                    status_code=502,
-                    detail=f"LLM returned invalid response: {repr(reply)}"
-                )
-    else:
-        # Non-deal queries - still require LLM
-        llm_prompt = f"""User said: "{text}"
+            # If travel query OR location mentioned, fetch bundles
+            if intent_data.get('is_travel_query') or intent_data.get('has_location'):
+                try:
+                    bundle_request = BundleRequest(
+                        origin=intent_data.get('origin'),
+                        destination=intent_data.get('destination'),
+                        budget=intent_data.get('budget'),
+                        constraints=intent_data.get('constraints', []),
+                        max_results=intent_data.get('max_results', 3)
+                    )
+                    
+                    # Call bundles endpoint
+                    with Session(engine) as sess:
+                        hotels_query = sess.exec(select(HotelModel).limit(200)).all()
+                        flights_query = sess.exec(select(FlightModel).limit(200)).all()
+                    
+                    # Build bundles context
+                    hotels_data = [
+                        {
+                            'id': h.id,
+                            'name': h.name,
+                            'city': h.city,
+                            'neighbourhood': h.neighbourhood,
+                            'price_per_night': h.price_per_night,
+                            'pet_friendly': h.is_pet_friendly,
+                            'has_breakfast': h.has_breakfast,
+                            'near_transit': h.near_transit,
+                            'availability': h.availability
+                        }
+                        for h in hotels_query
+                    ]
+                    
+                    flights_data = [
+                        {
+                            'id': f.id,
+                            'origin': f.origin,
+                            'destination': f.destination,
+                            'airline': f.airline,
+                            'price': f.price,
+                            'stops': f.stops,
+                            'duration_minutes': f.duration_minutes
+                        }
+                        for f in flights_query
+                    ]
+                    
+                    constraint_str = ', '.join(bundle_request.constraints) if bundle_request.constraints else 'none'
+                    budget_str = f"${bundle_request.budget}" if bundle_request.budget else "no budget"
+                    
+                    llm_prompt_bundles = f"""Create the best {bundle_request.max_results} trip bundles for:
+- From: {bundle_request.origin or 'any'}
+- To: {bundle_request.destination or 'any'}
+- Budget: {budget_str}
+- Must have: {constraint_str}
 
-You're a KAYAK travel concierge AI. Respond naturally to the user's request.
-If they ask for travel help, provide assistance.
-If the request is not travel-related, politely redirect to travel topics.
-Keep responses concise (1-2 sentences)."""
-        
-        reply = await llm_client.generate(llm_prompt, max_tokens=100, temperature=0.6)
-        
-        if not reply or len(reply.strip()) < 5:
-            raise HTTPException(
-                status_code=502,
-                detail=f"LLM returned invalid response: {repr(reply)}"
-            )
+AVAILABLE HOTELS:
+{json.dumps(hotels_data[:20], indent=1)}
+
+AVAILABLE FLIGHTS:
+{json.dumps(flights_data[:20], indent=1)}
+
+Return ONLY valid JSON array with {bundle_request.max_results} bundles. Example:
+[{{"bundle_id":"b1","flight":{{"origin":"SFO","destination":"LAX","airline":"United","price":280,"stops":0}},"hotel":{{"name":"Hotel","city":"LAX","neighbourhood":"Downtown","price_per_night":150,"nights":3,"tags":["pet-friendly","breakfast","near transit"]}},"total_price":720,"fit_score":85,"why_this":"Great value","what_to_watch":"Limited"}}]
+
+IMPORTANT:
+- Include "tags" array in hotel (pet-friendly, breakfast, near transit, wifi, etc)
+- why_this ≤ 25 words
+- what_to_watch ≤ 12 words
+- fit_score 0-100"""
+                    
+                    bundle_response = await llm_client.generate(llm_prompt_bundles, max_tokens=2000, temperature=0.5)
+                    
+                    # Parse bundles JSON
+                    json_start = bundle_response.find('[')
+                    json_end = bundle_response.rfind(']') + 1
+                    if json_start >= 0 and json_end > json_start:
+                        bundles = json.loads(bundle_response[json_start:json_end])
+                except Exception as e:
+                    print(f"Bundle generation error: {e}")
+                    bundles = None
+    except Exception as e:
+        print(f"Intent extraction error: {e}")
+    
+    # Now generate main chat response
+    llm_prompt = f"""You are a KAYAK travel concierge AI assistant. The user has asked:
+"{req.message}"
+
+Here is the complete travel database available:
+
+HOTELS:
+{hotels_context}
+
+FLIGHTS:
+{flights_context}
+
+Using this real data, respond naturally and helpfully to the user's request. 
+- If they ask for recommendations, use the actual hotel/flight data from the database
+- Mention specific hotels, prices, cities, and amenities
+- Be conversational and natural, not robotic
+- If the question is not travel-related, politely redirect to travel topics
+- Keep responses 2-4 sentences unless more detail is needed"""
+
+    reply = await llm_client.generate(llm_prompt, max_tokens=300, temperature=0.7)
+    
+    if not reply or len(reply.strip()) < 5:
+        raise HTTPException(
+            status_code=502,
+            detail=f"LLM service returned empty response"
+        )
 
     session.append({'sender': 'bot', 'text': reply})
-    return {'session_id': req.session_id, 'message': reply}
+    
+    # Return response with bundles if found
+    response = {
+        'session_id': req.session_id, 
+        'message': reply
+    }
+    
+    if bundles and len(bundles) > 0:
+        response['bundles'] = bundles[:3]
+        response['bundles_count'] = len(bundles)
+    
+    return response
 
 
 
 @app.post('/bundles')
 async def create_bundles(req: BundleRequest):
-    """Create flight+hotel bundles with Fit Score and explanations"""
-    async with get_session() as sess:
-        q = select(Deal).limit(500)
+    """Create trip bundles - LLM powered to find best matches and explain them"""
+    if not llm_client.LLM_ENABLED:
+        raise HTTPException(
+            status_code=503,
+            detail="LLM service is not enabled. Ollama must be running."
+        )
+    
+    try:
+        # Get all available data
+        engine = get_deals_engine()
+        with Session(engine) as sess:
+            hotels = sess.exec(select(HotelModel).limit(200)).all()
+            flights = sess.exec(select(FlightModel).limit(200)).all()
         
-        if req.destination:
-            q = q.where(Deal.neighbourhood.ilike(f"%{req.destination}%"))
+        print(f"DEBUG: Found {len(hotels)} hotels, {len(flights)} flights")
         
-        res = await sess.exec(q)
-        deals = list(res.all())
+        # Build database context as JSON for LLM
+        hotels_data = [
+            {
+                'id': h.id,
+                'name': h.name,
+                'city': h.city,
+                'neighbourhood': h.neighbourhood,
+                'price_per_night': h.price_per_night,
+                'pet_friendly': h.is_pet_friendly,
+                'has_breakfast': h.has_breakfast,
+                'near_transit': h.near_transit,
+                'availability': h.availability
+            }
+            for h in hotels
+        ]
         
-        if not deals:
-            return {'bundles': [], 'message': 'No deals available yet'}
+        flights_data = [
+            {
+                'id': f.id,
+                'origin': f.origin,
+                'destination': f.destination,
+                'airline': f.airline,
+                'price': f.price,
+                'stops': f.stops,
+                'duration_minutes': f.duration_minutes
+            }
+            for f in flights
+        ]
         
-        # Separate flights and hotels
-        flights, hotels = [], []
-        for deal in deals:
-            lid = deal.listing_id or ''
-            if lid.startswith('FLT') or 'flight' in str(deal.raw or '').lower():
-                flights.append(deal)
+        constraint_str = ', '.join(req.constraints) if req.constraints else 'none'
+        budget_str = f"${req.budget}" if req.budget else "no budget limit"
+        start_date_str = req.start_date or "flexible dates"
+        end_date_str = req.end_date or "flexible dates"
+        
+        llm_prompt = f"""Create the best {req.max_results} trip bundles for this request:
+
+TRIP REQUEST:
+- From: {req.origin}
+- To: {req.destination}
+- Check-in: {start_date_str}
+- Check-out: {end_date_str}
+- Budget: {budget_str}
+- Must have: {constraint_str}
+
+AVAILABLE HOTELS:
+{json.dumps(hotels_data, indent=1)}
+
+AVAILABLE FLIGHTS:
+{json.dumps(flights_data, indent=1)}
+
+Return ONLY a JSON array with {req.max_results} bundles. Example format:
+[{{"bundle_id":"b1","flight":{{"origin":"LAX","destination":"NYC","airline":"United","price":300,"stops":0}},"hotel":{{"name":"Hotel","city":"NYC","neighbourhood":"Midtown","price_per_night":150,"nights":3,"tags":["pet-friendly"]}},"total_price":750,"fit_score":85,"why_this":"Good value pet-friendly","what_to_watch":"Check availability"}}]
+
+Requirements: why_this ≤ 25 words, what_to_watch ≤ 12 words, fit_score 0-100"""
+
+        print(f"DEBUG: Calling LLM with prompt length {len(llm_prompt)}")
+        reply = await llm_client.generate(llm_prompt, max_tokens=2000, temperature=0.5)
+        
+        print(f"DEBUG: LLM response length: {len(reply)}")
+        print(f"DEBUG: LLM response (first 200 chars): {reply[:200]}")
+        
+        if not reply or len(reply.strip()) < 50:
+            return {
+                'bundles': [],
+                'count': 0,
+                'error': 'LLM returned empty response'
+            }
+        
+        # Parse LLM response as JSON
+        try:
+            # Find JSON array in response
+            json_start = reply.find('[')
+            json_end = reply.rfind(']') + 1
+            if json_start >= 0 and json_end > json_start:
+                json_str = reply[json_start:json_end]
+                bundles = json.loads(json_str)
             else:
-                hotels.append(deal)
-        
-        # Median price for scoring
-        all_prices = [d.price for d in deals if d.price]
-        median_price = sorted(all_prices)[len(all_prices)//2] if all_prices else 300
-        
-        bundles_list = []
-        
-        for hotel in hotels[:20]:
-            hotel_tags = []
-            try:
-                hotel_tags = json.loads(hotel.tags) if hotel.tags and hotel.tags.startswith('[') else []
-            except:
-                pass
+                bundles = json.loads(reply)
             
-            # Constraint matching
-            if req.constraints:
-                matches = all(any(c.lower() in str(t).lower() for t in hotel_tags) for c in req.constraints)
-                if not matches:
-                    continue
+            print(f"DEBUG: Parsed {len(bundles)} bundles from LLM")
             
-            flight = flights[0] if flights else None
-            hotel_price = hotel.price or 0
-            flight_price = flight.price if flight else 0
-            total_price = hotel_price + flight_price
-            
-            if req.budget and total_price > req.budget:
-                continue
-            
-            # Fit Score calculation
-            fit_score = 50.0
-            
-            # Price component (30 points)
-            if median_price > 0:
-                price_ratio = total_price / median_price
-                if price_ratio < 0.85:
-                    fit_score += 30
-                elif price_ratio < 1.0:
-                    fit_score += 15
-            
-            # Amenity match (25 points)
-            if req.constraints:
-                match_count = sum(1 for c in req.constraints if any(c.lower() in str(t).lower() for t in hotel_tags))
-                fit_score += (match_count / len(req.constraints)) * 25
-            
-            # Budget fit bonus (10 points)
-            if req.budget and total_price < req.budget * 0.8:
-                fit_score += 10
-            
-            fit_score = min(100, max(0, fit_score))
-            
-            # Why This (≤25 words)
-            price_vs_median = int(((median_price - total_price) / median_price * 100)) if median_price > 0 else 0
-            why_parts = []
-            if price_vs_median > 0:
-                why_parts.append(f"{price_vs_median}% below avg")
-            if hotel_tags:
-                why_parts.append(f"{', '.join(hotel_tags[:2])}")
-            if hotel.neighbourhood:
-                why_parts.append(hotel.neighbourhood)
-            why_this = ' • '.join(why_parts)[:100]
-            
-            # What to Watch (≤12 words)
-            watch_parts = []
-            if hotel.availability and hotel.availability < 5:
-                watch_parts.append(f"Only {hotel.availability} left")
-            if 'refundable' in ' '.join(hotel_tags).lower():
-                watch_parts.append("Refund window")
-            what_to_watch = ' • '.join(watch_parts)[:50] if watch_parts else "Stable"
-            
-            bundles_list.append({
-                'bundle_id': f"bundle_{hotel.id}",
-                'flight': {'listing_id': flight.listing_id if flight else None, 'price': flight_price} if flight else None,
-                'hotel': {
-                    'listing_id': hotel.listing_id,
-                    'price': hotel_price,
-                    'neighbourhood': hotel.neighbourhood,
-                    'tags': hotel_tags,
-                },
-                'total_price': round(total_price, 2),
-                'fit_score': round(fit_score, 1),
-                'why_this': why_this,
-                'what_to_watch': what_to_watch,
-            })
-        
-        bundles_list.sort(key=lambda x: x['fit_score'], reverse=True)
-        
-        return {'bundles': bundles_list[:req.max_results], 'count': len(bundles_list)}
+            return {
+                'bundles': bundles[:req.max_results] if isinstance(bundles, list) else [],
+                'count': len(bundles) if isinstance(bundles, list) else 0
+            }
+        except json.JSONDecodeError as e:
+            print(f"DEBUG: JSON parse error: {e}")
+            print(f"DEBUG: Failed to parse: {reply[:300]}")
+            return {
+                'bundles': [],
+                'count': 0,
+                'raw_response': reply[:300],
+                'parse_error': str(e)
+            }
+    except Exception as e:
+        import traceback
+        print(f"ERROR in /bundles: {traceback.format_exc()}")
+        return {
+            'bundles': [],
+            'count': 0,
+            'error': str(e)
+        }
 
 @app.post('/watches')
 async def create_watch(req: WatchRequest):

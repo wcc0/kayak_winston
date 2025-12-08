@@ -104,6 +104,7 @@ function App() {
                 <Route path="/flights/:id" element={<FlightDetails />} />
                 <Route path="/hotels/:id" element={<HotelDetails />} />
                 <Route path="/cars/:id" element={<CarDetails />} />
+                <Route path="/booking/bundle" element={<Booking />} />
                 <Route path="/booking/:type/:id" element={<Booking />} />
                 <Route path="/my-bookings" element={<MyBookings />} />
                 <Route path="/login" element={<Login />} />
